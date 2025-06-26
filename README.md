@@ -11,6 +11,7 @@ This project analyzes a retail dataset using Python, PostgreSQL (star schema mod
 - `python/`: Notebook for cleaning and EDA
 - `powerbi/`: Final interactive dashboard (drive link attached below)
 - `screenshots/`: Dashboard + ERD preview images
+- `report/`: PDF of the report presentation
 
 ## ⚙️ Tools Used
 - PostgreSQL (pgAdmin, VS Code)
@@ -42,6 +43,11 @@ The cleaned dataset (`cleaned_retail_data.csv`) is hosted externally due to GitH
 The `.pbix` dashboard file is hosted externally due to GitHub’s size restrictions.
 
 👉 [Click here to view or download the Power BI file] (https://drive.google.com/file/d/16Z_BeytFQTDIocnLXdhCAFIbBrvB0l4B/view?usp=drive_link)
+
+## 📝 Final Report
+
+You can view the project summary and design process here:  
+📄 [Retail_Project_Report.pdf] (report/Retail_Project_Report.pdf)
 
 ## 👤 Author
 **Adrika Shinjini**  
