@@ -1,0 +1,54 @@
+DROP TABLE IF EXISTS retail_staging;
+
+CREATE TABLE retail_staging (
+    Transaction_ID VARCHAR,
+    Customer_ID NUMERIC,
+    Name TEXT,
+    Email TEXT,
+    Phone TEXT,
+    Address TEXT,
+    City TEXT,
+    State TEXT,
+    Zipcode TEXT,
+    Country TEXT,
+    Age NUMERIC,
+    Gender TEXT,
+    Income TEXT,                 -- Changed from NUMERIC
+    Customer_Segment TEXT,
+    Date DATE,
+    Year NUMERIC,
+    Month TEXT,
+    Time TEXT,
+    Total_Purchases NUMERIC,
+    Amount NUMERIC,
+    Total_Amount NUMERIC,
+    Product_Category TEXT,
+    Product_Brand TEXT,
+    Product_Type TEXT,
+    Feedback TEXT,
+    Shipping_Method TEXT,
+    Payment_Method TEXT,
+    Order_Status TEXT,
+    Ratings NUMERIC,
+    Products TEXT
+);
+
+SELECT *
+FROM retail_staging
+LIMIT 10;
+
+ALTER TABLE retail_staging
+ALTER COLUMN Customer_ID TYPE INTEGER USING Customer_ID::INTEGER,
+ALTER COLUMN Age TYPE INTEGER USING Age::INTEGER,
+ALTER COLUMN Year TYPE INTEGER USING Year::INTEGER,
+ALTER COLUMN Total_Purchases TYPE INTEGER USING Total_Purchases::INTEGER,
+ALTER COLUMN Ratings TYPE INTEGER USING Ratings::INTEGER;
+
+-- Optional cleanup check
+SELECT COUNT(*) AS total_rows,
+       COUNT(DISTINCT Transaction_ID) AS unique_transactions
+FROM retail_staging;
+
+-- Check for nulls in key fields
+SELECT COUNT(*) FROM retail_staging WHERE Customer_ID IS NULL OR Product_Type IS NULL OR Date IS NULL;
+
