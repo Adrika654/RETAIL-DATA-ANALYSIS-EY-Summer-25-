@@ -7,9 +7,9 @@ This project analyzes a retail dataset using Python, PostgreSQL (star schema mod
 
 ## 📁 Project Structure
 - `sql/`: Scripts for staging, modeling, and views
-- `data/`: Cleaned retail CSV used for loading
+- `data/`: Cleaned retail CSV used for loading (drive link attached below)
 - `python/`: Notebook for cleaning and EDA
-- `powerbi/`: Final interactive dashboard
+- `powerbi/`: Final interactive dashboard (drive link attached below)
 - `screenshots/`: Dashboard + ERD preview images
 
 ## ⚙️ Tools Used
@@ -30,6 +30,12 @@ This project analyzes a retail dataset using Python, PostgreSQL (star schema mod
 1. Load `cleaned_retail_data.csv` into PostgreSQL
 2. Run `staging.sql`, `modelling.sql`, and `transformation.sql`
 3. Open `Retail_Dashboard.pbix` and refresh data
+
+## 📂 Dataset Access
+
+The cleaned dataset (`cleaned_retail_data.csv`) is hosted externally due to GitHub’s file size constraints.
+
+👉 [Click here to download the dataset from Google Drive](https://drive.google.com/file/d/1dJ4iLGmOOoo8hcWHrUndhJIc6eSltHCc/view?usp=sharing)
 
 ## 📁 Power BI Dashboard File
 
