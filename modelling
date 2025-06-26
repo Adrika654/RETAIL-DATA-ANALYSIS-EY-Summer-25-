@@ -1,0 +1,98 @@
+-- Table: public.dim_customer
+
+-- DROP TABLE IF EXISTS public.dim_customer;
+
+CREATE TABLE IF NOT EXISTS public.dim_customer
+(
+    customer_id integer NOT NULL,
+    name text COLLATE pg_catalog."default",
+    gender text COLLATE pg_catalog."default",
+    age integer,
+    email text COLLATE pg_catalog."default",
+    phone text COLLATE pg_catalog."default",
+    income text COLLATE pg_catalog."default",
+    customer_segment text COLLATE pg_catalog."default",
+    CONSTRAINT dim_customer_pkey PRIMARY KEY (customer_id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.dim_customer
+    OWNER to postgres;
+
+-- Table: public.dim_date
+
+-- DROP TABLE IF EXISTS public.dim_date;
+
+CREATE TABLE IF NOT EXISTS public.dim_date
+(
+    full_date date,
+    year integer,
+    month text COLLATE pg_catalog."default",
+    "time" text COLLATE pg_catalog."default"
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.dim_date
+    OWNER to postgres;
+
+-- Table: public.dim_location
+
+-- DROP TABLE IF EXISTS public.dim_location;
+
+CREATE TABLE IF NOT EXISTS public.dim_location
+(
+    zipcode text COLLATE pg_catalog."default",
+    city text COLLATE pg_catalog."default",
+    state text COLLATE pg_catalog."default",
+    country text COLLATE pg_catalog."default"
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.dim_location
+    OWNER to postgres;
+
+-- Table: public.dim_product
+
+-- DROP TABLE IF EXISTS public.dim_product;
+
+CREATE TABLE IF NOT EXISTS public.dim_product
+(
+    product_type text COLLATE pg_catalog."default",
+    product_category text COLLATE pg_catalog."default",
+    product_brand text COLLATE pg_catalog."default"
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.dim_product
+    OWNER to postgres;
+
+-- Table: public.fact_sales_final
+
+-- DROP TABLE IF EXISTS public.fact_sales_final;
+
+CREATE TABLE IF NOT EXISTS public.fact_sales_final
+(
+    transaction_id character varying COLLATE pg_catalog."default",
+    customer_id integer,
+    full_date date,
+    product_type text COLLATE pg_catalog."default",
+    zipcode text COLLATE pg_catalog."default",
+    total_purchases integer,
+    amount numeric,
+    total_amount numeric,
+    ratings integer,
+    feedback text COLLATE pg_catalog."default",
+    shipping_method text COLLATE pg_catalog."default",
+    payment_method text COLLATE pg_catalog."default",
+    order_status text COLLATE pg_catalog."default"
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.fact_sales_final
+    OWNER to postgres;
+
