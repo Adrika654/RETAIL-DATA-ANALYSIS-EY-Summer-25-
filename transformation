@@ -1,0 +1,53 @@
+CREATE OR REPLACE VIEW Total_Spend_Per_Customer AS
+SELECT
+    c.Customer_ID,
+    c.Name,
+    COUNT(f.Transaction_ID) AS Total_Transactions,
+    SUM(f.Total_Amount) AS Total_Spent,
+    AVG(f.Total_Amount) AS Avg_Spend_Per_Transaction
+FROM Fact_Sales f
+JOIN Dim_Customer c ON f.Customer_ID = c.Customer_ID
+GROUP BY c.Customer_ID, c.Name;
+
+CREATE OR REPLACE VIEW Sales_By_Product AS
+SELECT
+    p.Product_Category,
+    p.Product_Brand,
+    COUNT(f.Transaction_ID) AS Transactions,
+    SUM(f.Total_Amount) AS Total_Sales
+FROM Fact_Sales f
+JOIN Dim_Product p ON f.Product_Type = p.Product_Type
+GROUP BY p.Product_Category, p.Product_Brand
+ORDER BY Total_Sales DESC;
+
+CREATE OR REPLACE VIEW Monthly_Sales_Trend AS
+SELECT
+    d.Year,
+    d.Month,
+    SUM(f.Total_Amount) AS Monthly_Sales,
+    COUNT(f.Transaction_ID) AS Transactions
+FROM Fact_Sales f
+JOIN Dim_Date d ON f.Full_Date = d.Full_Date
+GROUP BY d.Year, d.Month
+ORDER BY d.Year, d.Month;
+
+CREATE OR REPLACE VIEW Sales_By_Region AS
+SELECT
+    l.Country,
+    l.State,
+    COUNT(f.Transaction_ID) AS Transactions,
+    SUM(f.Total_Amount) AS Total_Sales
+FROM Fact_Sales f
+JOIN Dim_Location l ON f.Zipcode = l.Zipcode
+GROUP BY l.Country, l.State
+ORDER BY Total_Sales DESC;
+
+CREATE OR REPLACE VIEW Avg_Spend_Per_Product AS
+SELECT
+    p.Product_Type,
+    COUNT(f.Transaction_ID) AS Transactions,
+    SUM(f.Total_Amount) AS Total_Sales,
+    AVG(f.Total_Amount) AS Avg_Spend
+FROM Fact_Sales f
+JOIN Dim_Product p ON f.Product_Type = p.Product_Type
+GROUP BY p.Product_Type;
